@@ -9,7 +9,7 @@ public abstract class Trader {
 	
 	
 	public Trader(){
-		cash = 100; 
+		cash = 1000; 
 		amountOfStockHeld = 0; 
 		currentValueOfStock = stockMarket.getCurrentValueOfTheStock();
 	}
@@ -22,6 +22,8 @@ public abstract class Trader {
 	public abstract void computeDividentScore();
 	
 	public abstract void overValuedStockComputation();
+	
+	public abstract void computeBuysSells(); 
 	
 	
 	
