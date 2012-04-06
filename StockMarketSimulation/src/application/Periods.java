@@ -17,4 +17,11 @@ public class Periods {
 		
 	}
 	
+	public double getPrice(){
+		return price; 
+	}
+	
+	public int getPeriod(){
+		return period; 
+	}
 }
