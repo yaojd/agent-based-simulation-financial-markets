@@ -22,4 +22,14 @@ public class HistoryList {
 		historyList.add(period); 
 		periodNo ++; 
 	}
+	
+	public ArrayList<Periods> getLastNPeriods(int numberOfPeriods){
+		
+		ArrayList<Periods> nPeriods = new ArrayList<Periods>();  
+		for(int i=0; i<numberOfPeriods; i++){
+			nPeriods.add(historyList.get(periodNo - i)); 
+		}
+		
+		return nPeriods; 
+	}
 }
