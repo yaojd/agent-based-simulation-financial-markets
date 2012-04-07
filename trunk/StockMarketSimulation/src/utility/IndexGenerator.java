@@ -207,7 +207,7 @@ public class IndexGenerator {
         //dal.saveDoubleArray("c:\\indexvals.txt", baselineIndex);
 
         int l = baselineIndex.length;
-        System.out.println(l);
+        //System.out.println(l);
 
         double mn = baselineIndex[0][0];
         double mx = baselineIndex[0][0];
@@ -229,15 +229,15 @@ public class IndexGenerator {
         }
 
 
-        System.out.println(mn);
-        System.out.println(mx);
+        //System.out.println(mn);
+        //System.out.println(mx);
 
         double diff = mx - mn;
         double incr = diff/4.0;
 
 
-        System.out.println(diff);
-        System.out.println(incr);
+        //System.out.println(diff);
+        //System.out.println(incr);
 
         double s1 = mn;
         double s2 = mn + incr;
