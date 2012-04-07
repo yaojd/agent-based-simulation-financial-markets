@@ -4,7 +4,14 @@ public class main {
 
     public static void main(String[] args) {
 
+        int NumberOfRecords = 1000;
 
+        //Generate some Dividends
+        double dividends[] = IndexGenerator.getDividends(NumberOfRecords );
+
+        //dal.printArray(dividends);
+
+        // Generate some index values:
         RNG r1 = new RNG(1);
         int S0      = 1000;
         double mu      = .05;
@@ -15,14 +22,18 @@ public class main {
         //Number of companies to simulate:
         int  nCompanies = 1;
         //# of records:
-        int N = 4;
-        double[][] baselineIndex = IndexGenerator.getIndex(N, r1, S0, mu, sigma, T, nCompanies, step);
+        int N = NumberOfRecords;
+        double[][] index = IndexGenerator.getIndex(N, r1, S0, mu, sigma, T, nCompanies, step);
+        
+        dal.printArray(index);
 
-        //print Full Index for 8 simulations:
-        dal.printArray(baselineIndex);
+        
+
+
 
 
     }
+
 
 
 }

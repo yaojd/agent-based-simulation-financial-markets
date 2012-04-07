@@ -5,6 +5,7 @@ public class IndexGenerator {
 
     private double[][] baselineIndex;
 
+
     public IndexGenerator(int nCompanies, int numberOfRecords){
 
         RNG r1 = new RNG(1);
@@ -20,6 +21,8 @@ public class IndexGenerator {
         baselineIndex = IndexGenerator.getIndex(N, r1, S0, mu, sigma, T, nCompanies, step);
 
     }
+
+
 
 
     public double getPrice(int CompanyIndex, int rowIndex)
@@ -175,4 +178,106 @@ public class IndexGenerator {
 
  */
 
+
+
+    /*
+     returns a double array containing the level of dividends paid in time period
+     returns 1 for Low Dividend Level
+     returns 2 for Medium Dividend Level
+     returns 3 for High Dividend Level
+
+    */
+    public static double[] getDividends(int NumberRecords) {
+        RNG r1 = new RNG(1);
+        int S0      = 1000;
+        double mu      = .05;
+        double sigma   = .32;
+        int T       =   5;
+        double step    = 1.0/255;
+
+        //Number of companies to simulate:
+        int  nCompanies = 1;
+        //# of records:
+        int N = NumberRecords;
+        double[][] baselineIndex = IndexGenerator.getIndex(N, r1, S0, mu, sigma, T, nCompanies, step);
+
+
+        //print Full Index for 8 simulations:
+        //dal.printArray(baselineIndex);
+        //dal.saveDoubleArray("c:\\indexvals.txt", baselineIndex);
+
+        int l = baselineIndex.length;
+        System.out.println(l);
+
+        double mn = baselineIndex[0][0];
+        double mx = baselineIndex[0][0];
+
+
+        for (int i = 0; i < l; i++)
+        {
+            if ( baselineIndex[i][0] < mn  )
+            {
+                mn = baselineIndex[i][0];
+
+            }
+
+            if ( baselineIndex[i][0] > mx  )
+            {
+                mx = baselineIndex[i][0];
+
+            }
+        }
+
+
+        System.out.println(mn);
+        System.out.println(mx);
+
+        double diff = mx - mn;
+        double incr = diff/4.0;
+
+
+        System.out.println(diff);
+        System.out.println(incr);
+
+        double s1 = mn;
+        double s2 = mn + incr;
+        double s3 = s2 + incr;
+        double s4 = s3 + incr;
+
+
+        //double dividends[l] =
+
+
+        double[] dividends = new double[l];
+        for (int i = 0; i < l; i++)
+        {
+            if(baselineIndex[i][0] >= s1 &&  baselineIndex[i][0] < s2)
+            {
+
+                dividends[i]= 1;
+            }
+
+            if(baselineIndex[i][0] >= s2 &&  baselineIndex[i][0] < s3)
+            {
+                dividends[i]= 2;
+            }
+
+
+            if(baselineIndex[i][0] >= s3 &&  baselineIndex[i][0] < s4)
+            {
+                dividends[i]= 3;
+            }
+
+
+        }
+
+        //dal.printArray(dividends);
+        double divmin =  dal.min(dividends);
+
+        //System.out.println(divmin);
+        //dal.printArray(dividends);
+
+        return dividends;
+
+    }
 }
