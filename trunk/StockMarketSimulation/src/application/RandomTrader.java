@@ -22,6 +22,8 @@ public class RandomTrader{
         double dividends[] = IndexGenerator.getDividends(numberOfRecords);
         double[][] baseline = idx.getIndex();
 
+
+
         
         currentIndex = new double[numberOfRecords];        
         double[] pctChg = new double[numberOfRecords];
