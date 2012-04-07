@@ -19,7 +19,7 @@ public class IndexGenerator {
         int N = numberOfRecords;
         baselineIndex = IndexGenerator.getIndex(N, r1, S0, mu, sigma, T, nCompanies, step);
 
-	}
+    }
 
 
     public double getPrice(int CompanyIndex, int rowIndex)
